@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag "blazer/application" %>
     <%= stylesheet_link_tag "bnb_blazer/application" %>
     <%= javascript_include_tag "blazer/application" %>
+    <%= javascript_include_tag "bnb_blazer/application" %>
     <script>
       <%= blazer_js_var "rootPath", root_path %>
     </script>
@@ -22,6 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <%= render partial: "bnb_blazer/nav" %>
     <%= yield :header %>
 
     <div class="container">

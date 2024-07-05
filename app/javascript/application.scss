@@ -1,3 +1,15 @@
+@import "bootstrap/scss/bootstrap";
+
+:root {
+  --bs-body-font-size: 16px;
+}
+.btn {
+  font-size: 16px;
+}
+.dropdown-menu {
+  font-size: 16px;
+}
+
 body {
   background-color: #edebeb;
   font-family: 'Roboto Condensed', sans-serif;
@@ -6,9 +18,17 @@ body {
   padding-bottom: 0;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 #footer {
   margin-top: 2em;
   width: 100%;
+}
+
+.dropdown-toggle:after{
+  display: none;
 }
 
 #results > * {
@@ -30,11 +50,12 @@ body {
 
 .nav-btn {
   color: #2eb1e6;
-  border-bottom: 2px solid #2eb1e6;
-
   .btn-link {
     color: #2eb1e6;
   }
+}
+.active.nav-btn{
+  border-bottom: 2px solid #2eb1e6;
 }
 
 .topbar {
@@ -78,16 +99,18 @@ body {
 
 .sidebar {
   position: fixed;
-  left: -250px;
+  right: -250px;
+  top: 75px;
   width: 250px;
-  height: 100%;
-  background: #40424a;
+  height: 60%;
   transition: all 0.5s ease;
   z-index: 10000;
   padding: 0 20px;
-
-  &.show {
-    left: 0;
+  background-color: white;
+  text-align: end;
+  &.open {
+    right: 10px;
+    border-radius: 5px
   }
 
   .sidebar-header {
@@ -105,11 +128,17 @@ body {
   
   a {
     display: block;
-    color: #FFF;
     padding: 10px 0px;
-    font-size: 2.5rem;
     font-weight: 300;
+    text-decoration: none;
+    color: black;
+    &:hover{
+      color: #478bb3;
+    }
   }
+}
+.align-start {
+  text-align: start!important;
 }
 
 .header-title {

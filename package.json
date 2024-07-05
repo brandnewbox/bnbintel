@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "node ./esbuild.mjs"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "bootstrap": "^5.3.3",
+    "esbuild": "^0.21.5",
+    "esbuild-sass-plugin": "^3.3.1"
+  }
+}

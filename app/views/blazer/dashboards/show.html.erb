@@ -1,11 +1,4 @@
 <% blazer_title @dashboard.name %>
-
-<% content_for :header do %>
-  <%= render layout: "blazer/nav" do %>
-    <%= link_to "Edit", edit_dashboard_path(@dashboard, variable_params(@dashboard)), class: "btn btn-link" %>
-  <% end %>
-<% end %>
-
 <div style="margin-bottom: 60px;"></div>
 
 <% if @data_sources.any? { |ds| ds.cache_mode != "off" } %>

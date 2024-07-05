@@ -1,0 +1,60 @@
+<div  data-controller="toggle" data-toggle-show-class="d-flex d-block" data-toggle-hide-class="d-none" data-toggle-open-class="open">
+  <div class="header d-flex justify-content-between bg-white">
+    <div class="logo">
+      <%= image_tag "bnb_blazer/bnb_box.svg", class: "ms-3", style: "height: 5rem;" %>
+      <% if Blazer.client_logo %>
+        <%= image_tag Blazer.client_logo, class: "ms-3", style: "height: 5rem;" %>
+      <% end %>
+    </div>
+    <div class="d-flex d-md-none">
+      <div class="menu-icon d-flex align-items-center me-3" id="menu-icon" data-toggle-target="menuIcon" data-action="click->toggle#open">
+        <svg class="d-flex flex-grow-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </div>
+    </div>
+    <div class="d-none d-md-flex align-items-center">
+      <%=link_to "All Entries", root_path, class: "nav-btn p-2 text-decoration-none #{"active" if current_page?(root_path)}" %>
+      <%=link_to "Checks", checks_path, class: "nav-btn p-2 text-decoration-none #{"active" if current_page?(checks_path)}" %>
+      <div class="btn-group nav-btn d-flex border-0 me-3">
+        <button type="button" class="btn btn-link dropdown-toggle text-decoration-none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="btn-primary rounded-pill p-3 d-inline">
+            New Entry 
+            <span class="caret mx-2"></span>
+            </div>
+          
+        </button>
+        <ul class="dropdown-menu">
+          <li><%= link_to "New Dashboard", new_dashboard_path %></li>
+          <li><%= link_to "New Check", new_check_path %></li>
+          <li><%= link_to "New Query", new_query_path %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="close-btn d-none align-items-center pe-3" id="close-btn" data-toggle-target="closeBtn" data-action="click->toggle#close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="rounded-circle bg-white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="#478bb3"/></svg>
+    </div>
+  </div>
+
+  <div class="sidebar" id="sidebar" data-toggle-target="sidebar">
+    <div id="primary-sidebar" data-toggle-target="primaryOptions">
+      <%=link_to "All Entries", root_path%>
+      <%=link_to "Checks", checks_path%>
+      <a href="#" id="new-entry" class="d-flex justify-content-end" data-action="click->toggle#newEntry">
+        <div class="btn-primary rounded-pill p-3">
+          New Entry →
+        </div>
+      </a>
+    </div>
+
+    <div id="secondary-sidebar" class="d-none" data-toggle-target="secondaryOptions">
+      <svg id="secondary-close-btn" data-action="click->toggle#closeNewEntry"  xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" class="my-3">
+        <circle cx="12" cy="12" r="10" fill="#e0e0e0"/>
+        <path d="M14 16l-4-4 4-4" stroke="#666666" stroke-width="2" fill="none"/>
+      </svg>
+      <p style="color: gray;"> NEW ENTRY </p>
+      <%=link_to "New Dashboard", new_dashboard_path%>
+      <%=link_to "New Query", new_query_path%>
+      <%=link_to "Checks", new_check_path%>
+    </div>
+  </div>
+</div>

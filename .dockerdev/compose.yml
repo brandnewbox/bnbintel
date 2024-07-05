@@ -62,9 +62,10 @@ services:
       test: pg_isready -U postgres -h 127.0.0.1
       interval: 5s
 
-  # webpack:
-  #   <<: *backend
-  #   command: yarn build --watch
+  assets:
+    <<: *backend
+    command: yarn build --watch
+
   # standardrb:
   #   <<: *backend
   #   command: bundle exec standardrb
