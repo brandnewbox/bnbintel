@@ -9,6 +9,21 @@
 
 <div style="margin-bottom: 60px;"></div>
 
+<div class="card bg-white border-0 mb-3">
+  <div class="card-body row align-items-center">
+    <div class="col-auto">
+    <h3><%= @query.name %></h3> 
+    </div>
+    <div class="col d-flex justify-content-end">
+      <%= link_to "Edit", edit_query_path(@query, variable_params(@query)), class: "btn bg-primary rounded-pill mx-2 text-white", disabled: !@query.editable?(blazer_user) %>
+      <%= link_to "Fork", new_query_path(variable_params(@query).merge(fork_query_id: @query.id, data_source: @query.data_source, name: @query.name)), class: "btn bg-primary rounded-pill mx-2 text-white" %>
+      <% if !@error && @success %>
+        <%= button_to "Download", run_queries_path(format: "csv"), params: run_data, class: "btn bg-primary rounded-pill mx-2 text-white" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <% if @sql_errors.any? %>
   <div class="alert alert-danger">
     <ul>
@@ -26,20 +41,6 @@
 <%= render partial: "blazer/variables", locals: {action: query_path(@query)} %>
 
 <%# <pre id="code"><code><%= @statement ></code></pre> %>
-<div class="card bg-white border-0 mb-3">
-  <div class="card-body row align-items-center">
-    <div class="col-auto">
-    <h3><%= @query.name %></h3> 
-    </div>
-    <div class="col d-flex justify-content-end">
-      <%= link_to "Edit", edit_query_path(@query, variable_params(@query)), class: "btn bg-primary rounded-pill mx-2 text-white", disabled: !@query.editable?(blazer_user) %>
-      <%= link_to "Fork", new_query_path(variable_params(@query).merge(fork_query_id: @query.id, data_source: @query.data_source, name: @query.name)), class: "btn bg-primary rounded-pill mx-2 text-white" %>
-      <% if !@error && @success %>
-        <%= button_to "Download", run_queries_path(format: "csv"), params: run_data, class: "btn bg-primary rounded-pill mx-2 text-white" %>
-      <% end %>
-    </div>
-  </div>
-</div>
 <% if @success %>
   <div id="results">
     <p class="text-muted">Loading...</p>
